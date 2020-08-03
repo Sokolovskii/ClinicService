@@ -1,0 +1,36 @@
+<dialog id="RegistrationModal">
+    <div class="modalTitle">
+        Регистрация
+    </div>
+    <div>
+        <div class="modalItem">
+            <label for="nameRegister" class="LabelForInput">Имя:</label>
+            <input type="text" id="nameRegister" class="inputRow" required="required">
+        </div>
+        
+        <div class="modalItem">
+            <label for="loginRegister" class="LabelForInput">Логин:</label>
+            <input type="text" id="loginRegister" class="inputRow" required="required">
+        </div>
+        
+        <div class="modalItem">
+            <label for="passwordRegister" class="LabelForInput">Пароль:</label>
+            <input type="password" id="passwordRegister" class="inputRow" required="required">
+        </div>
+        
+        <div class="modalItem">
+            <label for="ConfirmPasswordRegister" class="LabelForInput">Подтверждение пароля:</label>
+            <input type="password" id="ConfirmPasswordRegister" class="inputRow" required="required">
+        </div>
+        
+        <div>
+            <label for="IsDoctorCheckbox" class="LabelForInput">Зарегистрироваться как врач:</label>
+            <input type="checkbox" id="IsDoctorCheckbox" class="inputRow"/>
+        </div>
+    </div>
+    <div id="RegistrationModalError" class="errorMessage"></div>
+    <div class="modalFooter">
+        <button onclick="authorizationHandler.CloseRegistrationModal()" class="modalButton">Закрыть</button>
+        <button onclick="authorizationHandler.SignIn()" class="submitButtonModal">Зарегистрироваться</button>
+    </div>
+</dialog>

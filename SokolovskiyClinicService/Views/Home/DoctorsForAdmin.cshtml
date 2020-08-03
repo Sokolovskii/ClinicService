@@ -1,0 +1,74 @@
+@model IEnumerable<SokolovskiyClinicService.Models.ModelView.DoctorScheduleProfessionForTablesViewModel>
+
+<fieldset class="tableBorder">
+    <legend class="legendOfTablesDoctorPanel">Утвержденные врачи</legend>
+    <table class="table" id="adminApprovedDoctorsTable">
+        <tr>
+            <th>Имя врача</th>
+            <th>Специальность врача</th>
+            <th>Рабочий день врача</th>
+        </tr>
+        @foreach (var doctor in @Model.Where(d => d.Doctor.IsApproved))
+        {
+            <tr>
+                <td class="nowrapContent" id="name">@doctor.Doctor.Name</td>
+                <td>@doctor.Profession.Name</td>
+                <td>
+                    <button class="nowrapContent" onclick="scheduleHandler.ViewSchedule(@doctor.Doctor.Id, '@doctor.Doctor.Name')">Просмотреть расписание врача</button>
+                </td>
+
+                <td>
+                    <button
+                        onclick="adminHandler.OpenChangeModal(@doctor.Doctor.Id, '@doctor.Doctor.Name')"
+                        class="changeScheduleButton nowrapContent">
+                        Изменить график работы
+                    </button>
+                </td>
+                @if (!@doctor.Doctor.IsRemoved)
+                {
+                    <td>
+                        <button onclick="adminHandler.OpenDeleteModal(event)" data-doctorId="@doctor.Doctor.Id" class="nowrapContent deleteDoctorButton">Удалить врача</button>
+                    </td>
+                }
+                else
+                {
+                    <td class="dissmised">Врач будет уволен @doctor.Doctor.DateOfDismissal.ToString("D")</td>
+                }
+            </tr>
+        }
+    </table>
+</fieldset>
+<fieldset class="tableBorder">
+    <legend class="legendOfTablesDoctorPanel">Заявки на одобрение</legend>
+    <table class="table" id="adminDisapprovedDoctorsTable">
+        <tr>
+            <th>Имя врача</th>
+            <th>Заявки</th>
+        </tr>
+        @foreach (var doctor in @Model.Where(d => !d.Doctor.IsApproved))
+        {
+            <tr>
+                <td class="nowrapContent">@doctor.Doctor.Name</td>
+
+                <td>
+                    <button
+                        onclick="adminHandler.OpenDoctorInfoModal(@doctor.Doctor.Id, '@doctor.Doctor.Name')"
+                        class="ApproveButton nowrapContent">
+                        Рассмотреть заявку
+                    </button>
+                </td>
+            </tr>
+        }
+    </table>
+</fieldset>
+
+<div>
+    @{ await Html.RenderPartialAsync("ViewScheduleModal");}
+    @{ await Html.RenderPartialAsync("ChangeScheduleModal"); }
+    @{ await Html.RenderPartialAsync("DeleteDoctorModal"); }
+    @{ await Html.RenderPartialAsync("DoctorInfoModal");}
+    @{ await Html.RenderPartialAsync("AddNewProfessionModal");}
+</div>
+
+<script src="~/TScompiled/adminHandler.bundle.js"></script>
+<script src="~/TScompiled/scheduleHandler.bundle.js"></script>

@@ -1,0 +1,22 @@
+<dialog id="LogInModal">
+    <div class="modalTitle">
+        Авторизация
+    </div>
+    <div>
+        <div class="modalItem">
+            <label for="loginInput" class="LabelForInput">Логин:</label>
+            <input id="loginInput" class="inputRow" type="text" placeholder="Логин" required="required">
+        </div>
+        
+        <div class="modalItem">
+            <label for="passwordInput" class="LabelForInput">Пароль:</label>
+            <input id="passwordInput" class="inputRow" type="password" placeholder="Пароль" required="required">
+        </div>
+
+    </div>
+    <div id="LogInError" class="errorMessage"></div>
+    <div class="modalFooter">
+        <button onclick="authorizationHandler.CloseLogInModal()" type="button" class="modalButton" id="closeLogInModal">Закрыть</button>
+        <button onclick="authorizationHandler.LogIn()" type="submit" id="submitLogInModal" class="submitButtonModal">Войти</button>
+    </div>
+</dialog>

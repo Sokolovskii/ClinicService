@@ -1,0 +1,14 @@
+﻿<dialog id="AddNewProfessionModal">
+    <div class="modalTitle">
+        Введите название новой профессии
+    </div>
+    <div class="flexContainer modalItem">
+            <label class="LabelForInput">Название специальности:&nbsp</label>
+            <input id="NewProfessionName" type="text">
+    </div>
+    <div id="AddNewProfessionModalError" class="errorMessage"></div>
+    <div class="modalFooter">
+        <button type="button" onclick="adminHandler.CloseAddNewProfessionModal()" class="modalButton">Закрыть</button>
+        <button type="submit" onclick="adminHandler.AddNewProfession()" class="submitButtonModal">Отправить данные</button>
+    </div>
+</dialog>

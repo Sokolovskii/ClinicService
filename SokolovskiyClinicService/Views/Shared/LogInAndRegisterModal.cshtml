@@ -1,0 +1,18 @@
+<dialog class="commonAuthorizationModal" id="LogInAndRegisterModal">
+    <div class="modalTitle">
+        К сожалению, вы не можете использовать функционал приложения без авторизации, если вы не зарегистрировали аккаунт, то вы можете зарегистрировать его здесь
+    </div>
+    <div class="modalContent">
+        <div class="modalItem">
+            <button class="buttonBox" onclick="authorizationHandler.OpenRegistrationModal()">Регистрация</button>
+        </div>
+        <div class="modalItem">
+            <button class="buttonBox" onclick="authorizationHandler.OpenLogInModal()">Авторизация</button>
+        </div>
+    </div>
+    <div id="LogInAndRegisterModalError" class="errorMessage"></div>
+    <div class="modalFooter">
+        <button class="modalButton" onclick="authorizationHandler.CloseCommonRegisterModal()">Закрыть</button>
+    </div>
+
+</dialog>

@@ -1,0 +1,72 @@
+﻿<dialog id="ViewScheduleModal" class="scheduleViewModal">
+    <div class="modalTitle">
+        Рабочий график врача
+    </div>
+    <div>
+
+        <div id="scheduleNotFound" class="invisible">
+        </div>
+
+        <div class="modalItem">
+            <div style="display:none" id="doctorId"></div>
+            <div class="flexContainer">
+                <label class="LabelForInput">Имя врача:&nbsp</label>
+                <div id="doctorName" type="text"></div>
+            </div>
+        </div>
+
+        <div class="flexContainer modalItem">
+            <label class="LabelForInput">Понедельник:&nbsp</label>
+            <div id="mondayBeginView" type="time"></div>
+            <div> - </div>
+            <div id="mondayEndView" type="time"></div>
+        </div>
+
+        <div class="flexContainer modalItem">
+            <label class="LabelForInput">Вторник:</label>
+            <div id="tuesdayBeginView" type="time"></div>
+            <div> - </div>
+            <div id="tuesdayEndView" type="time"></div>
+        </div>
+
+        <div class="flexContainer modalItem">
+            <label class="LabelForInput">Среда:</label>
+            <div id="wednesdayBeginView" type="time"></div>
+            <div> - </div>
+            <div id="wednesdayEndView" type="time"></div>
+        </div>
+
+        <div class="flexContainer modalItem">
+            <label class="LabelForInput">Четверг:</label>
+            <div id="thursdayBeginView" type="time"></div>
+            <div> - </div>
+            <div id="thursdayEndView" type="time"></div>
+        </div>
+
+        <div class="flexContainer modalItem">
+            <label class="LabelForInput">Пятница:</label>
+            <div id="fridayBeginView" type="time"></div>
+            <div> - </div>
+            <div id="fridayEndView" type="time"></div>
+        </div>
+
+        <div class="flexContainer modalItem">
+            <label class="LabelForInput">Суббота:</label>
+            <div id="saturdayBeginView" type="time"></div>
+            <div> - </div>
+            <div id="saturdayEndView" type="time"></div>
+        </div>
+
+        <div class="flexContainer modalItem">
+            <label class="LabelForInput">Воскресенье:</label>
+            <div id="sundayBeginView" type="time"></div>
+            <div> - </div>
+            <div id="sundayEndView" type="time"></div>
+        </div>
+        <br>
+    </div>
+    <div id="ViewScheduleModalError" class="errorMessage"></div>
+    <div class="modalFooter">
+        <button onclick="scheduleHandler.CloseViewScheduleModal()" type="button" id="closeViewScheduleModal" class="modalButton">Закрыть</button>
+    </div>
+</dialog>

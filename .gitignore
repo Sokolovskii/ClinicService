@@ -1,0 +1,13 @@
+[Bb]in
+[Oo]bj
+.idea
+/packages/
+riderModule.iml
+/_reSharper.Caches/
+.vs
+/[Oo]bj
+/[Bb]in
+[Nn]ode_modules
+
+*/wwwroot/TScompiled
+out

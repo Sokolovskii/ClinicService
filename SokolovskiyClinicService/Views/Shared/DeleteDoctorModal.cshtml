@@ -1,0 +1,28 @@
+<dialog id="dismissModal">
+    <div class="modalTitle">
+        Увольнение врача
+    </div>
+    <div>
+        <div class="modalItem">
+            <div style="display:none" id="doctorIdDelete"></div>
+            <div class="flexContainer">
+                <label class="LabelForInput">Имя врача:&nbsp</label>
+                <div id="doctorNameDelete"></div>
+            </div>
+        </div>
+        
+        <div class="modalItem">
+            <label class="LabelForInput">Дата увольнения(через две недели после указанной даты врач будет уволен):</label>
+        </div>
+        <div class="modalItem">
+            <input id="dateOfDismissal" class="inputRow" type="date">
+        </div>
+            
+        
+    <div id="dismissModalError"></div>
+    </div>
+    <div class="modalFooter">
+        <button onclick="adminHandler.CloseDeleteModal()" type="button" class="modalButton" id="closeLogInModal">Закрыть</button>
+        <button onclick="adminHandler.DeleteDoctor()" type="submit" id="submitLogInModal" class="submitButtonModal">Отправить данные</button>
+    </div>
+</dialog>

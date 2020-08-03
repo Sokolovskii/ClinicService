@@ -1,0 +1,40 @@
+@model IEnumerable<SokolovskiyClinicService.Models.ModelView.DoctorScheduleProfessionForTablesViewModel>
+
+@if (!@Model.Any())
+{
+    <div>
+        К сожалению, врачей по данному направлению пока нет в больнице
+    </div>
+}
+else
+{
+    <div class="tableBorder">
+        <table class="table">
+            <tr>
+                <th>Имя врача</th>
+                <th>Специальность врача</th>
+                <th>Рабочий день врача</th>
+            </tr>
+            @foreach (var doctor in @Model)
+            {
+                <tr class="borderTopRow">
+                    <td class="nowrapContent">@doctor.Doctor.Name</td>
+                    <td>@doctor.Profession.Name</td>
+                    <td>
+                        <button onclick="scheduleHandler.ViewSchedule(@doctor.Doctor.Id, '@doctor.Doctor.Name')">Показать расписание врача</button>
+                    </td>
+                    <td>
+                        <a href= '@Url.RouteUrl(new{Controller="Home", Action="Session", doctorId=doctor.Doctor.Id, dateTime=DateTime.Today})'>Посмотреть расписание сеансов врача</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+
+<div>
+    @{ await Html.RenderPartialAsync("ViewScheduleModal");}
+</div>
+
+<script src="~/TScompiled/userHandler.bundle.js"></script>
+<script src="~/TScompiled/scheduleHandler.bundle.js"></script>

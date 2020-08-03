@@ -1,0 +1,132 @@
+﻿@using System.Security.Claims
+@using Microsoft.AspNetCore.Mvc.Routing
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] Sokolovskiy Clinic Service</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css"/>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <div class="toolBarLeft">
+                    <div class="toolBarElement" id="homePage">
+                        <select id="selectDoctorsNavBar" onchange="main.ViewDoctors()"></select>
+                        <a class="navbar-brand" style="white-space: nowrap" asp-area="" asp-controller="Home" asp-action="Index">Главная страница</a>
+                    </div>
+                </div>
+                <div class="toolBarRight">
+                    <div id="toolBarLogin" class="toolBarElement">
+
+                        <div class="toolBarButtonBox">
+                            <button onclick="authorizationHandler.OpenLogInModal()" class="toolBarButton" id="logIn">Войти</button>
+                        </div>
+
+                        <div class="toolBarButtonBox">
+                            <button onclick="authorizationHandler.OpenRegistrationModal()" class="toolBarButton" id="signIn">Зарегистрироваться</button>
+                        </div>
+
+                    </div>
+                </div>
+            }
+            else if (User.Claims.First(c => c.Type == ClaimsIdentity.DefaultRoleClaimType).Value == "Admin")
+            {
+                <div class="toolBarLeft">
+                    <div class="toolBarElement">
+                        <div id="AddProfessionButtonBox" class="toolBarElement">
+                            <div class="toolBarButtonBox">
+                                <button onclick="adminHandler.OpenAddNewProfessionModal()" class="toolBarButton">Добавить новую специальность</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="toolBarRight">
+                    <div id="toolBarUserInfo" class="toolBarElement">
+                        <div class="toolBarButtonBox">
+                            <a href="@Url.RouteUrl(new {Controller = "AuthorizationApi", Action = "LogOut"})" class="toolBarButton" id="logout">Выйти</a>
+                        </div>
+
+                        <div class="toolBarButtonBox">
+                            <div class="userNameBar" id="userName">@User.Identity.Name</div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                if(!window.location.href.includes("DoctorsForAdmin"))
+                    window.location.href="Home/DoctorsForAdmin";
+                </script>
+            }
+            else if (User.Claims.First(c => c.Type == ClaimsIdentity.DefaultRoleClaimType).Value == "Doctor")
+            {
+                <div class="toolBarRight">
+                    <div id="toolBarUserInfo" class="toolBarElement">
+
+                        <div class="toolBarButtonBox">
+                            <a href="@Url.RouteUrl(new {Controller = "AuthorizationApi", Action = "LogOut"})" class="toolBarButton" id="logout">Выйти</a>
+                        </div>
+
+                        <div class="toolBarButtonBox">
+                            <div class="userNameBar" id="userName">@User.Identity.Name</div>
+                        </div>
+
+                    </div>
+                </div>
+                <script>
+                if(!window.location.href.includes("DoctorPanel"))
+                    window.location.href="Home/DoctorPanel";
+                </script>
+            }
+            else
+            {
+                <div class="toolBarLeft">
+                    <div class="toolBarLeft">
+                        <div class="toolBarElement" id="homePage">
+                            <select id="selectDoctorsNavBar" onchange="main.ViewDoctors()"></select>
+                            <a class="navbar-brand" style="white-space: nowrap" asp-area="" asp-controller="Home" asp-action="Index">Главная страница</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="toolBarRight">
+                    <div id="toolBarUserInfo" class="toolBarElement">
+
+                        <div class="toolBarButtonBox">
+                            <a href="@Url.RouteUrl(new {Controller = "AuthorizationApi", Action = "LogOut"})" class="toolBarButton" id="logout">Выйти</a>
+                        </div>
+
+                        <div class="toolBarButtonBox">
+                            <div class="userNameBar" id="userName">@User.Identity.Name</div>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<div>
+    @{ await Html.RenderPartialAsync("LogInModal"); }
+    @{ await Html.RenderPartialAsync("RegistrationModal"); }
+    @{ await Html.RenderPartialAsync("LogInAndRegisterModal"); }
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/TScompiled/main.bundle.js"></script>
+<script src="~/TScompiled/authorizationHandler.bundle.js"></script>
+@RenderSection("Scripts", required: false)
+</body>
+</html>

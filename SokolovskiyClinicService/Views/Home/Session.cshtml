@@ -1,0 +1,196 @@
+@model SokolovskiyClinicService.Models.ModelView.SessionView
+
+<div class="flexContainer">
+    <div class="info">
+        <div class="idInvisible">
+            <div id="doctorIdSession">@Model.Doctor.Doctor.Id</div>
+        </div>
+        <div class="idInvisible">
+            <div id="professionIdSession">@Model.Doctor.Profession.Id</div>
+        </div>
+        <div class="item">
+            <div id="name">Имя врача: @Model.Doctor.Doctor.Name</div>
+        </div>
+        <div class="item">
+            <div id="profession">Специализация: @Model.Doctor.Profession.Name</div>
+        </div>
+        <br>
+        <div>
+            <div>Выберите день для записи:</div>
+            <input onchange="userHandler.RedirectToSession(@Model.Doctor.Doctor.Id)" id="dateForSessions" type="date" value="@Model.DateTime.ToString("yyyy-MM-dd")"/>
+        </div>
+    </div>
+
+    <div class="flexContainer">
+        <div>
+            <div class="tableBorder">
+                <table>
+                    <tr>
+                        <table>
+                            <tr>
+                                <td style="width: 256px"></td>
+                                <td>
+                                    <span style="white-space: nowrap">@Model.DateTime.ToString("D") @Model.DateTime.ToString("dddd")</span>
+                                </td>
+                                <td style="width: 256px"></td>
+                            </tr>
+                        </table>
+                    </tr>
+                </table>
+                @if (@Model.DateTime >= DateTime.Today)
+                {
+                    @if (@Model.Doctor.Doctor.IsRemoved && Model.DateTime > @Model.Doctor.Doctor.DateOfDismissal)
+                    {
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    К сожалению, доктор к этой дате будет уволен
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                    <table class="table">
+                        @if (@Model.Doctor.Schedule != null)
+                        {
+                            foreach (var (time, session) in @Model.Sessions)
+                            {
+                                if (time >= @Model.Doctor.Schedule.BeginOfDay && time <= @Model.Doctor.Schedule.EndOfDay.Add(TimeSpan.FromMinutes(-30)))
+                                {
+                                    <tr>
+                                        <td class="sessionTimeBox">
+                                            <span>@time.ToString("hh\\:mm")</span>
+                                        </td>
+                                        @if (@Model.DateTime.DayOfWeek == DayOfWeek.Sunday || @Model.DateTime.DayOfWeek == DayOfWeek.Saturday)
+                                        {
+                                            <td class="NonWorkedCell"></td>
+                                        }
+                                        else
+                                        {
+                                            if (session != null)
+                                            {
+                                                if (session.UserId == @Model.UserId)
+                                                {
+                                                    if (User.Identity.IsAuthenticated)
+                                                    {
+                                                        <td
+                                                        onclick="userHandler.OpenDeletingSubmitModal(event)"
+                                                        data-sessionId="@session.Id"
+                                                        data-time="@time.ToString("hh\\:mm")"
+                                                        class="sessionRowBoxReservedByUser">
+                                                        Занято вами
+                                                    </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td
+                                                            onclick="authorizationHandler.OpenCommonRegisterModal()"
+                                                            class="sessionRowBoxReservedByUser">
+                                                            Занято вами
+                                                        </td>
+                                                    }
+                                                    
+                                                }
+                                                else
+                                                {
+                                                    <td class="sessionRowBoxReserved"></td>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (User.Identity.IsAuthenticated)
+                                                {
+                                                    <td
+                                                        onclick="userHandler.OpenReservingSubmitModal(event)"
+                                                        data-time="@time.ToString("hh\\:mm")"
+                                                        class="sessionRowBoxFree">
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td
+                                                        onclick="authorizationHandler.OpenCommonRegisterModal()"
+                                                        class="sessionRowBoxFree">
+                                                    </td>
+                                                }
+                                            }
+                                        }
+                                    </tr>
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+
+                                <td>
+                                    На данную дату врач не работает
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+                else
+                {
+                    <table class="sessionTableInactive">
+                        @if (@Model.Doctor.Schedule != null)
+                        {
+                            foreach (var (time, session) in @Model.Sessions)
+                            {
+                                if (time >= @Model.Doctor.Schedule.BeginOfDay && time <= @Model.Doctor.Schedule.EndOfDay.Add(TimeSpan.FromMinutes(-30)))
+                                {
+                                    <tr>
+                                        <td class="sessionTimeBox tdInactive">
+                                            <span>@time.ToString("hh\\:mm")</span>
+                                        </td>
+                                        @if (@Model.DateTime.DayOfWeek == DayOfWeek.Sunday || @Model.DateTime.DayOfWeek == DayOfWeek.Saturday)
+                                        {
+                                            <td class="NonWorkedCell tdInactive"></td>
+                                        }
+                                        else
+                                        {
+                                            if (session != null)
+                                            {
+                                                if (session.UserId == @Model.UserId)
+                                                {
+                                                    <td class="sessionRowBoxReservedByUser tdInactive">Занято вами</td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="sessionRowBoxReserved tdInactive"></td>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <td class="sessionRowBoxFree tdInactive"></td>
+                                            }
+                                        }
+                                    </tr>
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td>
+                                    На данную дату врач не работает
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    @{ await Html.RenderPartialAsync("ReservingInfoModal"); }
+    @{ await Html.RenderPartialAsync("DeletingInfoModal"); }
+    @{ await Html.RenderPartialAsync("RegistrationModal");}
+    @{ await Html.RenderPartialAsync("LogInModal");}
+    @{ await Html.RenderPartialAsync("LogInAndRegisterModal");}
+</div>
+
+<script src="~/TScompiled/userHandler.bundle.js"></script>
+<script src="~/TScompiled/authorizationHandler.bundle.js"></script>

@@ -1,0 +1,36 @@
+﻿<dialog id="AddDoctorModal" class="adminModal">
+    <div>
+        <div class="modalTitle">
+            Добавление нового врача
+        </div>
+        <div>
+            <div>
+                <label for="doctorNameInput" class="LabelForInput">Имя:</label>
+                <input id="doctorNameInput" class="inputRow" type="text" placeholder="Имя доктора" required="required">
+            </div>
+
+            <div id="specialisationIdBox" class="AddParameterBoxOpen">
+                <label for="professionIdSelect" class="LabelForInput">Специальность:</label>
+                <select id="professionIdSelect"></select>
+            </div>
+            
+            <div id="specialisationNameBox" class="AddParameterBoxHide">
+                <label for="specialisationNameInput" class="LabelForInput">Название специальности:</label>
+                <input id="specialisationNameInput" class="inputRow" type="text" placeholder="Название специальности">
+            </div>
+
+            <div class="flexContainer" id="workDay">
+                <label for="workDay" class="LabelForInput">Рабочий день:</label>
+                <input id="workDayBegin" type="time">
+                <div> - </div>
+                <input id="workDayEnd" type="time">
+            </div>
+            <p><input type="checkbox" onclick="adminHandler.ChangeModalState()" id="checkboxAddNewDoctorModal"> Флаг новой специальности</p>
+        </div>
+        <div id="AddDoctorModalError" class="errorMessage"></div>
+        <div>
+            <button type="button" onclick="adminHandler.CloseAddModal()" class="modalButton" id="closeAddDoctorModal">Закрыть</button>
+            <button type="submit" onclick="adminHandler.AddNewDoctor()" id="submitAddDoctorModal" class="submitButtonModal">Отправить данные</button>
+        </div>
+    </div>
+</dialog>

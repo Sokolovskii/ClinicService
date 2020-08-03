@@ -1,0 +1,12 @@
+﻿<tr class="borderTopRow">
+    <td>{{:name}}</td>
+    <td>{{:professionName}}</td>
+    <td>{{:timeOfBeginWorkDay}} - {{:timeOfEndWorkDay}}</td>
+    <td>
+        <button onclick="adminHandler.OpenChangeModal(event)" data-doctorId="{{:doctorId}}" class="changeScheduleButton">Изменить график работы
+        </button>
+    </td>
+    <td>
+        <button onclick="adminHandler.OpenDeleteModal(event)" data-doctorId="{{:doctorId}}" class="deleteDoctorButton">Удалить врача</button>
+    </td>
+</tr>

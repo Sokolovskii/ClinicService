@@ -1,0 +1,7 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4b5a667d_002Dd4dd_002D4ea8_002Da768_002D15b58f13251a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ReserveSessionCorrect" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::FFD5675D-FF15-45C3-9CDC-1682D6CC7CF1::.NETCoreApp,Version=v3.1::SokolovskiyClinicService.Tests.SokolovskiyClinicService_ReserveSessionShould&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::FFD5675D-FF15-45C3-9CDC-1682D6CC7CF1::.NETCoreApp,Version=v3.1::SokolovskiyClinicService.Tests.SokolovskiyClinicService_AddNewScheduleShould.AddNewScheduleCorrect&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

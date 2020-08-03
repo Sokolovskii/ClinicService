@@ -1,0 +1,84 @@
+﻿<dialog id="DoctorInfoModal" class="scheduleViewModal">
+    <div class="modalTitle">
+        Информация о враче
+    </div>
+    <div>
+
+        <div id="approveError" class="invisible">
+        </div>
+
+        <div class="modalItem">
+            <div style="display:none" id="doctorInfoId"></div>
+            <div class="flexContainer">
+                <label class="LabelForInput">Имя врача:&nbsp</label>
+                <div id="doctorNameApprove" type="text"></div>
+            </div>
+        </div>
+
+        <div>
+            <div class="flexContainer">
+                <label class="LabelForInput">Профессия врача:&nbsp</label>
+                <div id="professionNameApprove" type="text"></div>
+            </div>
+        </div>
+
+        <label id="scheduleInfo" class="LabelForInput">Расписание врача</label>
+        <div id="scheduleInfoTable">
+            <div class="flexContainer modalItem">
+                <label class="LabelForInput">Понедельник:&nbsp</label>
+                <div id="mondayBeginApprove" type="time"></div>
+                <div> - </div>
+                <div id="mondayEndApprove" type="time"></div>
+            </div>
+
+            <div class="flexContainer modalItem">
+                <label class="LabelForInput">Вторник:</label>
+                <div id="tuesdayBeginApprove" type="time"></div>
+                <div> - </div>
+                <div id="tuesdayEndApprove" type="time"></div>
+            </div>
+
+            <div class="flexContainer modalItem">
+                <label class="LabelForInput">Среда:</label>
+                <div id="wednesdayBeginApprove" type="time"></div>
+                <div> - </div>
+                <div id="wednesdayEndApprove" type="time"></div>
+            </div>
+
+            <div class="flexContainer modalItem">
+                <label class="LabelForInput">Четверг:</label>
+                <div id="thursdayBeginApprove" type="time"></div>
+                <div> - </div>
+                <div id="thursdayEndApprove" type="time"></div>
+            </div>
+
+            <div class="flexContainer modalItem">
+                <label class="LabelForInput">Пятница:</label>
+                <div id="fridayBeginApprove" type="time"></div>
+                <div> - </div>
+                <div id="fridayEndApprove" type="time"></div>
+            </div>
+            
+            <div class="flexContainer modalItem">
+                <label class="LabelForInput">Суббота:</label>
+                <div id="saturdayBeginApprove" type="time"></div>
+                <div> - </div>
+                <div id="saturdayEndApprove" type="time"></div>
+            </div>
+            
+            <div class="flexContainer modalItem">
+                <label class="LabelForInput">Воскресенье:</label>
+                <div id="sundayBeginApprove" type="time"></div>
+                <div> - </div>
+                <div id="sundayEndApprove" type="time"></div>
+            </div>
+        </div>
+        <br>
+    </div>
+    <div id="DoctorInfoModalError" class="errorMessage"></div>
+    <div class="modalFooter">
+        <button onclick="adminHandler.CloseDoctorInfoModal()" type="button" class="modalButton">Закрыть</button>
+        <button onclick="adminHandler.DisapproveDoctor()" type="button" class="modalButton">Отклонить заявку</button>
+        <button onclick="adminHandler.ApproveDoctor()" id="ApproveDoctor" type="button" class="modalButton">Одобрить заявку</button>
+    </div>
+</dialog>

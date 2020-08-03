@@ -1,0 +1,60 @@
+﻿<dialog id="AddNewScheduleModal" class="scheduleViewModal">
+    <div class="modalTitle">
+        Установите себе расписание
+    </div>
+    <div>
+        <div class="flexContainer modalItem">
+            <label class="LabelForInput">Понедельник:&nbsp</label>
+            <input id="mondayBegin" type="time" min="08:00" max="21:00" step="1800">
+            <div> - </div>
+            <input id="mondayEnd" type="time" min="08:00" max="21:00" step="1800">
+        </div>
+
+        <div class="flexContainer modalItem">
+            <label class="LabelForInput">Вторник:</label>
+            <input id="tuesdayBegin" type="time" min="08:00" max="21:00" step="1800">
+            <div> - </div>
+            <input id="tuesdayEnd" type="time" min="08:00" max="21:00" step="1800">
+        </div>
+
+        <div class="flexContainer modalItem">
+            <label class="LabelForInput">Среда:</label>
+            <input id="wednesdayBegin" type="time" min="08:00" max="21:00" step="1800">
+            <div> - </div>
+            <input id="wednesdayEnd" type="time" min="08:00" max="21:00" step="1800">
+        </div>
+
+        <div class="flexContainer modalItem">
+            <label class="LabelForInput">Четверг:</label>
+            <input id="thursdayBegin" type="time" min="08:00" max="21:00" step="1800">
+            <div> - </div>
+            <input id="thursdayEnd" type="time" min="08:00" max="21:00" step="1800">
+        </div>
+
+        <div class="flexContainer modalItem">
+            <label class="LabelForInput">Пятница:</label>
+            <input id="fridayBegin" type="time" min="08:00" max="21:00" step="1800">
+            <div> - </div>
+            <input id="fridayEnd" type="time" min="08:00" max="21:00" step="1800">
+        </div>
+
+        <div class="flexContainer modalItem">
+            <label class="LabelForInput">Суббота:</label>
+            <input id="saturdayBegin" type="time" min="08:00" max="21:00" step="1800">
+            <div> - </div>
+            <input id="saturdayEnd" type="time" min="08:00" max="21:00" step="1800">
+        </div>
+
+        <div class="flexContainer modalItem">
+            <label class="LabelForInput">Воскресенье:</label>
+            <input id="sundayBegin" type="time" min="08:00" max="21:00" step="1800">
+            <div> - </div>
+            <input id="sundayEnd" type="time" min="08:00" max="21:00" step="1800">
+        </div>
+    </div>
+    <div id="AddNewScheduleModalError" class="errorMessage"></div>
+    <div class="modalFooter">
+        <button type="button" onclick="doctorHandler.CloseNewScheduleModal()" class="modalButton" id="closeAddNewScheduleModal">Закрыть</button>
+        <button type="submit" onclick="doctorHandler.AddNewSchedule()" id="submitAddNewScheduleModal" class="submitButtonModal">Отправить данные</button>
+    </div>
+</dialog>

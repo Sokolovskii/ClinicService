@@ -1,0 +1,370 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+.toolBarButtonBox{
+  width:auto;
+  height: auto;
+  margin-right: 2%
+}
+
+.toolBarRight{
+  background-color:inherit;
+  display:flex;
+  flex-direction: row-reverse;
+  width: auto;
+  margin-left: auto;
+}
+
+.toolBarElement{
+  background-color:inherit;
+  display:flex;
+  flex-direction: row-reverse;
+  width: auto;
+  margin: 2% 2% 2% 1%;
+}
+
+.toolBarElementLeft{
+  background-color:inherit;
+  display:flex;
+  flex-direction: row;
+  width: auto;
+  margin: 2% 2% 2% 1%;
+}
+
+.userNameBar{
+  white-space:nowrap;
+}
+
+.toolBarElementInvisible{
+  background-color:inherit;
+  flex-direction: row-reverse;
+  width: auto;
+  display: none;
+}
+
+.homePageElementInvisible{
+  background-color:inherit;
+  width: auto;
+  visibility: hidden;
+  display: -webkit-box;
+}
+
+.homePageElement{
+  background-color:inherit;
+  width: auto;
+  visibility: visible;
+  display: -webkit-box;
+}
+
+.flexContainer{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.toolBarLeft{
+  background-color:inherit;
+  display:flex;
+  flex-direction: row;
+  width: auto;
+}
+
+.toolBarButton{
+  width: auto;
+  height: 100%;
+  white-space: nowrap;
+}
+
+.block,
+.block select {
+  position: relative;
+  width: 300px;
+}
+
+.block .placeholder {
+  position: absolute;
+  z-index: 1;
+  left: 5px;
+  top: 2px;
+  pointer-events: none;
+  background: #fff;
+}
+
+.flexContainer{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.tableBorder{
+  Border:2px solid dimgrey;
+  border-radius: 10px;
+  width: auto;
+  margin-left: 5%;
+  margin-bottom: 10%;
+}
+
+.sessionTimeBox{
+  width: 36px;
+  height: 49px;
+  border-right: 1px gainsboro solid;
+  border-bottom: 1px gainsboro solid;
+}
+
+.sessionRowBox{
+  border-bottom: 1px gainsboro solid;
+  background-color: white;
+}
+
+.sessionRowBoxReserved{
+  border-bottom: 1px gainsboro solid;
+  background-color: Salmon;
+}
+
+.sessionRowBoxReservedByUser{
+  border-bottom: 1px gainsboro solid;
+  background-color: lightgreen;
+  text-align: center;
+}
+.deletingSession{
+  border-bottom: 1px gainsboro solid;
+  background-color: lightgreen;
+  text-align: center;
+}
+.sessionRowBoxFree{
+  border-bottom: 1px gainsboro solid;
+  background-color: white;
+}
+
+.NonWorkedCell{
+  border-bottom: 1px gainsboro solid;
+  background-color: gainsboro;
+}
+
+.LabelForInput{
+  width: 55%;
+  white-space: nowrap;
+}
+
+.inputRow{
+  width: 40%;
+}
+
+.modalTitle{
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px black solid;
+  padding: 2%;
+  margin-bottom: 3%;
+}
+
+.AddParameterBoxHide{
+  display: none;
+}
+
+.AddParameterBoxOpen{
+  display:inline;
+}
+
+.adminModal{
+  width: 50%;
+  height: auto;
+}
+
+.idInvisible{
+  display: none;
+}
+
+.commonAuthorizationModal{
+  width: 25%;
+  height: auto;
+}
+
+.buttonBox{
+  margin:1%
+}
+
+.modalFooter{
+  border-top: 1px black solid;
+  padding: 2%;
+  margin-top: 3%;
+}
+
+.modalContent{
+  text-align: center;
+}
+
+.modalItem{
+  margin: 0 1% 2% 1%;
+  display: flex;
+}
+
+.dissmised{
+  color: red;
+}
+
+.sessionTableInactive{
+  opacity: 0.5;
+  width: 100%;
+}
+
+.tdInactive{
+  padding: .75rem;
+  vertical-align: top;
+  border-top:  1px solid #dee2e6;
+}
+
+.modalButton{
+  width: auto;
+  white-space: nowrap;
+}
+
+.submitButtonModal{
+  width: auto;
+  float: right;
+  white-space: nowrap;
+}
+
+.disApproved{
+  color:red;
+}
+
+.approved{
+  color:green;
+}
+
+.containerDoctorPanelSchedule{
+  margin-bottom: 5%;
+  margin-top: 2%;
+}
+
+.buttonApproveDoctorPanel{
+  margin-left: auto;
+}
+
+.containerDoctorPanelProfession{
+  margin: 1% 0 1% 0;
+}
+
+.buttonSelectProfession{
+  margin-left: 5%;
+}
+
+.nameDoctorPanel{
+  margin: 2% 0 2% 0;
+}
+
+.tableBorderDoctorPanel{
+  width: auto;
+}
+
+.scheduleFrame{
+  width: auto;
+  border: 1px dimgray solid;
+  padding: 1%;
+}
+
+.frameMarginDoctorPanel{
+  margin-bottom: 2%;
+}
+
+.buttonScheduleDoctorPanel{
+  text-align: center;
+}
+
+.borderDoctorInfo{
+  border:1px dimgray solid;
+  padding: 1% 15% 1% 1%
+}
+
+.legendOfTablesDoctorPanel{
+  float:left;
+  margin-left: 1%;
+}
+
+.scheduleViewModal{
+  width: 30%;
+}
+
+.nowrapContent{
+  white-space: nowrap;
+}
+
+.errorMessage{
+  color:red;
+}

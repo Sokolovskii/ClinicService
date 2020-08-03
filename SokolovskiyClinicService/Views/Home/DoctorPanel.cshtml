@@ -1,0 +1,189 @@
+﻿@model SokolovskiyClinicService.Models.ModelView.DoctorPanelViewModel
+
+<div class="flexContainer">
+    <div class="borderDoctorInfo">
+        <div class="nameDoctorPanel">
+            Ваше имя в системе: @Model.DoctorView.Name
+        </div>
+        <div class="containerDoctorPanelProfession">
+            <div>
+                Профессия:
+            </div>
+            <div>
+                @if (@Model.ProfessionView != null)
+                {
+                    <div>
+                        @Model.ProfessionView.Name
+                    </div>
+                    <div>
+                        @if (Model.DoctorView.IsApproved)
+                        {
+                            <div class="approved">
+                                Вы допущены к работе.
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="disApproved">
+                                Ваша заявка не была одобрена.
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        <select id="selectNewProfession">Выбрать профессию</select>
+                    </div>
+                    <div>
+                        @if (Model.DoctorView.IsApproved)
+                        {
+                            <div class="approved">
+                                Вы допущены к работе.
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="disApproved">
+                                Ваша заявка не была одобрена.
+                            </div>
+                        }
+                    </div>
+                    <div id class="buttonApproveDoctorPanel">
+                        <button class="nowrapContent" onclick="doctorHandler.AddProfession()">Отправить профессию</button>
+                    </div>
+                    <div id="AddProfessionModalError" class="errorMessage"></div>
+                }
+            </div>
+
+        </div>
+
+    </div>
+    <div class="scheduleFrame">
+        @if (@Model.ScheduleViewModel != null)
+        {
+            <div class="frameMarginDoctorPanel">
+                <div>
+                    Актуальный рабочий график:
+                </div>
+            </div>
+            <div class="tableBorderDoctorPanel frameMarginDoctorPanel">
+                <table class="table">
+                    <tr>
+                        <th>
+                            День недели
+                        </th>
+                        <th>
+                            Начало рабочего дня
+                        </th>
+                        <th>
+                            Конец рабочего дня
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            Понедельник
+                        </td>
+                        <td>
+                            @Model.ScheduleViewModel.Monday?.BeginOfDay
+                        </td>
+                        <td>
+                            @Model.ScheduleViewModel.Monday?.EndOfDay
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Вторник
+                        </td>
+                        <td>
+                            @Model.ScheduleViewModel.Tuesday?.BeginOfDay
+                        </td>
+                        <td>
+                            @Model.ScheduleViewModel.Tuesday?.EndOfDay
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Среда
+                        </td>
+                        <td>
+                            @Model.ScheduleViewModel.Wednesday?.BeginOfDay
+                        </td>
+                        <td>
+                            @Model.ScheduleViewModel.Wednesday?.EndOfDay
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Четверг
+                        </td>
+                        <td>
+                            @Model.ScheduleViewModel.Thursday?.BeginOfDay
+                        </td>
+                        <td>
+                            @Model.ScheduleViewModel.Thursday?.EndOfDay
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Пятница
+                        </td>
+                        <td>
+                            @Model.ScheduleViewModel.Friday?.BeginOfDay
+                        </td>
+                        <td>
+                            @Model.ScheduleViewModel.Friday?.EndOfDay
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Суббота
+                        </td>
+                        <td>
+                            @Model.ScheduleViewModel.Saturday?.BeginOfDay
+                        </td>
+                        <td>
+                            @Model.ScheduleViewModel.Saturday?.EndOfDay
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Воскресенье
+                        </td>
+                        <td>
+                            @Model.ScheduleViewModel.Sunday?.BeginOfDay
+                        </td>
+                        <td>
+                            @Model.ScheduleViewModel.Sunday?.EndOfDay
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="frameMarginDoctorPanel buttonScheduleDoctorPanel">
+                <button class="nowrapContent" onclick="doctorHandler.OpenAddOrUpdateScheduleModal()">
+                    Внести новое расписание
+                </button>
+            </div>
+        }
+        else
+        {
+            <div class="frameMarginDoctorPanel">
+                <div>
+                    Актуальный рабочий график:
+                </div>
+            </div>
+            <div class="frameMarginDoctorPanel">
+                <div>
+                    <button onclick="doctorHandler.OpenNewScheduleModal()">Сформируйте расписание</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    @{ await Html.RenderPartialAsync("AddNewSchedule"); }
+    @{ await Html.RenderPartialAsync("ChangeScheduleModal"); }
+</div>
+
+<script src="~/TScompiled/doctorHandler.bundle.js"></script>

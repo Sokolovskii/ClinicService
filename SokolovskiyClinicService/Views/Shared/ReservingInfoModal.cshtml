@@ -1,0 +1,37 @@
+<dialog id="ReservingInfoModal">
+    <div class="modalTitle">
+        Подтвердите корректность выбранных данных
+    </div>
+
+    <div>
+        <div class="modalItem">
+            <div style="display:none" id="doctorIdReserving"></div>
+        </div>
+
+        <div class="modalItem">
+            <label class="LabelForInput">Имя врача:&nbsp</label>
+            <div id="doctorNameReserving" type="text"></div>
+        </div>
+
+        <div class="modalItem">
+            <label class="LabelForInput">Специальность:&nbsp</label>
+            <div id="doctorProfessionReserving" type="text"></div>
+        </div>
+
+        <div class="modalItem">
+            <label class="LabelForInput">Дата сеанса:</label>
+            <div id="DateOfSession" type="date"></div>
+        </div>
+
+        <div class="modalItem">
+            <label class="LabelForInput">Время сеанса:</label>
+            <div id="TimeOfBeginSession" type="time"></div>
+        </div>
+
+    </div>
+    <div id="ReservingInfoModalError" class="errorMessage"></div>
+    <div class="modalFooter">
+        <button type="button" onclick="userHandler.CloseReservingSubmitModal()" class="modalButton" id="closeChangeScheduleModal">Закрыть</button>
+        <button type="submit" onclick="userHandler.ReserveSession()" id="submitChangeScheduleModal" class="submitButtonModal">Отправить данные</button>
+    </div>
+</dialog>
